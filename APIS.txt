@@ -1,0 +1,4 @@
+http://jsonplaceholder.typicode.com/todos/;
+http://api.openweathermap.org/data/2.5/onecall?lat=0&lon=10&exclude=current,minutely,hourly&appid=7f7fb990c0d07404f86fb5f5a6922579
+http://nominatim.openstreetmap.org/search?format=json&limit=3&q=delhi
+https://api.openweathermap.org/data/2.5/weather?q=kolkata&appid=7f7fb990c0d07404f86fb5f5a6922579

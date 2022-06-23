@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.2/css/flag-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="icon"
+      href="https://media.istockphoto.com/vectors/abstract-globe-background-vector-id1311148884?k=20&m=1311148884&s=612x612&w=0&h=2zFGLiw0VmQbh_CFQgbTzaaamRygqILdq1T8QuglBSQ="
+      type="image/x-icon"
+    />
+    <title>News Website</title>
+  </head>
+
+  <body class="body">
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          >News infinity
+          <i
+            class="fa fa-feather-pointed"
+            aria-hidden="true"
+            style="color: yellow"
+          ></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/General" id="General">General</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Business" id="Business"
+                >Business</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Entertainment" id="Entertainment"
+                >Entertainment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Science" id="Science">Science</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Health" id="Health">Health</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Sports" id="Sports">Sports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/catg/Technology" id="Technology"
+                >Technology</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Weather" id="Weather">Weather News</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search" id="form" action="/weather">
+            <input
+              class="form-control me-2"
+              type="search"
+              name="city"
+              placeholder="Enter a city name"
+              aria-label="Search"
+              id="city"
+            />
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <% if (error) {%>
+    <div
+      class="alert alert-warning alert-dismissible fade show py-2"
+      role="alert"
+      id="message"
+    >
+      <span>
+        <strong>Please enter a valid city name</strong>
+      </span>
+      <span>
+        <button type="button" class="btn text-light toggle">Light Theme</button>
+      </span>
+    </div>
+    <%} else { %>
+    <div
+      class="alert alert-success alert-dismissible fade show py-2"
+      role="alert"
+      id="message"
+    >
+      <span>
+        <strong
+          ><i class="fa fa-map-marker" aria-hidden="true"></i> <%= address
+          %>,</strong
+        ><img src="https://flagcdn.com/<%= country %>.svg" id="flag" />
+      </span>
+      <span>
+        <button type="button" class="btn text-light toggle">Light Theme</button>
+      </span>
+    </div>
+    <%} %>
+
+    <div class="container-fluid">
+      <div class="row" id="news">
+        <% let i=0; %> <% if (!error){ data.daily.forEach(elem=>{ %> <% let
+        weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]%>
+        <div class="col-xl-3 col-md-6 p-2">
+          <div class="card">
+            <div class="card-body text-dark" style="background: #333">
+              <%let dt=new Date(); %>
+              <h1 class="card-title" style="color: white">
+                <% if(i!=0) { %>
+                <%=weekdays[(weekdays.indexOf(dt.toString().slice(0,3))+i)%7] %>
+                <% } else{ %>
+                <%=weekdays[(weekdays.indexOf(dt.toString().slice(0,3))+i)%7]%>(Today)
+                <% } %>
+              </h1>
+
+              <% i++; %>
+              <div class="info">
+                <span>
+                  <h2 class="card-title">
+                    <%=(elem.temp.day-273).toFixed(1) %>°C
+                  </h2>
+                  <h4 class="card-text"><%= elem.weather[0].description %></h4>
+                </span>
+                <span>
+                  <img
+                    src="http://openweathermap.org/img/w/<%= elem.weather[0].icon %>.png"
+                    alt="Poster not available"
+                  />
+                </span>
+              </div>
+            </div>
+            <div class="card-body lower">
+              <div class="info">
+                <span>
+                  <p class="card-text">
+                    <strong>
+                      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                      HIGH</strong
+                    >
+                    <%=(elem.temp.max-273).toFixed(1) %>°C
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      ><i class="fa fa-droplet" aria-hidden="true"></i>
+                      HUMIDITY</strong
+                    >
+                    <%= elem.humidity %>%
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      ><i class="fa fa-explosion" aria-hidden="true"></i>
+                      UVI</strong
+                    >
+                    <%= elem.uvi %>
+                  </p>
+                </span>
+                <span>
+                  <p class="card-text">
+                    <strong>
+                      <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                      LOW</strong
+                    >
+                    <%=(elem.temp.min-273).toFixed(1) %>°C
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      ><i class="fa fa-wind" aria-hidden="true"></i> WIND
+                      SPEED</strong
+                    >
+                    <%= elem.wind_speed %> Km/h
+                  </p>
+                  <p class="card-text">
+                    <strong
+                      ><i
+                        class="fa fa-arrows-down-to-line"
+                        aria-hidden="true"
+                      ></i>
+                      PRESSURE</strong
+                    >
+                    <%= elem.pressure %> mb
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% })}; %>
+      </div>
+    </div>
+
+    <footer class="page-footer font-medium blue text-light">
+      <div class="footer-copyright text-center">
+        <ul>
+          <a href="https://www.linkedin.com/in/akash-sardar-118858184/"
+            ><i class="fa fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/ACashSardar"
+            ><i class="fa fa-github"></i
+          ></a>
+          <a href="https://www.facebook.com/akash.sardar.1717"
+            ><i class="fa fa-facebook"></i
+          ></a>
+          <a href="https://www.instagram.com/lazer.kitty/"
+            ><i class="fa fa-instagram"></i
+          ></a>
+          <a href="https://twitter.com/AkashSa50571000"
+            ><i class="fa fa-twitter"></i
+          ></a>
+        </ul>
+        <label style="color: white"
+          >Copyright © 2022 Akash Sardar, All rights reserved.</label
+        ><br />
+      </div>
+    </footer>
+
+    <script src="js/source.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
