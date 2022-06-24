@@ -25,7 +25,7 @@
     />
     <link
       rel="icon"
-      href="https://media.istockphoto.com/vectors/abstract-globe-background-vector-id1311148884?k=20&m=1311148884&s=612x612&w=0&h=2zFGLiw0VmQbh_CFQgbTzaaamRygqILdq1T8QuglBSQ="
+      href="https://st.depositphotos.com/1006899/3776/i/950/depositphotos_37765339-stock-photo-news.jpg"
       type="image/x-icon"
     />
     <title>News Website</title>
@@ -103,7 +103,7 @@
 
     <% if (error) {%>
     <div
-      class="alert alert-warning alert-dismissible fade show py-2"
+      class="alert alert-warning alert-dismissible fade show py-2 my-0"
       role="alert"
       id="message"
     >
@@ -116,7 +116,7 @@
     </div>
     <%} else { %>
     <div
-      class="alert alert-success alert-dismissible fade show py-2"
+      class="alert alert-success alert-dismissible fade show py-2 my-0"
       role="alert"
       id="message"
     >
@@ -198,20 +198,20 @@
                     <%=(elem.temp.min-273).toFixed(1) %>°C
                   </p>
                   <p class="card-text">
-                    <strong
-                      ><i class="fa fa-wind" aria-hidden="true"></i> WIND
+                    <strong>
+                      <i class="fa fa-wind" aria-hidden="true"></i> WIND
                       SPEED</strong
                     >
                     <%= elem.wind_speed %> Km/h
                   </p>
                   <p class="card-text">
-                    <strong
-                      ><i
+                    <strong>
+                      <i
                         class="fa fa-arrows-down-to-line"
                         aria-hidden="true"
                       ></i>
-                      PRESSURE</strong
-                    >
+                      PRESSURE
+                    </strong>
                     <%= elem.pressure %> mb
                   </p>
                 </span>

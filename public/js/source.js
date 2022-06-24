@@ -34,7 +34,7 @@ function setWhiteTheme() {
   });
   Array.from(themeBtn).forEach((e) => {
     e.innerHTML = "Dark Theme";
-    e.style.background = "black";
+    e.style.background = "#333";
     e.style.transition = "0.5s";
   });
   console.log(localStorage.getItem("Theme"));

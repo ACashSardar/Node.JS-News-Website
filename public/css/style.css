@@ -12,8 +12,8 @@
 }
 
 .navbar-brand {
+  font-weight: bold;
   font-family: Comfortaa;
-  font-weight: 600;
 }
 
 nav {
@@ -80,6 +80,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-radius: 0;
 }
 
 #message span {
@@ -87,7 +88,7 @@ nav {
 }
 
 .row {
-  min-height: 65vh;
+  min-height: 69vh;
 }
 
 .toggle:hover {

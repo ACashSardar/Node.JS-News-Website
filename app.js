@@ -162,7 +162,7 @@ app.get("*", (req, res) => {
   res.send("Page not found");
 });
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 80;
 // const hostname = "127.0.0.1";
 
 // app.listen(port, hostname, () => {
