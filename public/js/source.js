@@ -1,3 +1,7 @@
+let body = document.getElementById("body");
+let nav = document.getElementById("my-nav");
+let navLinks = document.getElementsByClassName("nav-link");
+let brandName = document.getElementById("brand");
 let themeBtn = document.getElementsByClassName("btn text-light toggle");
 let cardText = document.getElementsByClassName("card-text");
 let cardTitle = document.getElementsByClassName("card-title");
@@ -8,6 +12,15 @@ let icon = document.querySelectorAll(".info span i");
 
 function setWhiteTheme() {
   localStorage.setItem("Theme", "White");
+  body.style.background = "white";
+  nav.style.background = "white";
+  brandName.style.color = "black";
+
+  Array.from(navLinks).forEach((e) => {
+    e.style.color = "#333";
+    e.style.transition = "0.5s";
+  });
+
   Array.from(cardText).forEach((e) => {
     e.style.color = "black";
     e.style.transition = "0.5s";
@@ -21,7 +34,7 @@ function setWhiteTheme() {
     e.style.transition = "0.5s";
   });
   Array.from(cardBody).forEach((e) => {
-    e.style.background = "#aaf0f0";
+    e.style.background = "#eeeeee";
     e.style.transition = "0.5s";
   });
   Array.from(cardBodyLwr).forEach((e) => {
@@ -33,7 +46,7 @@ function setWhiteTheme() {
     e.style.transition = "0.5s";
   });
   Array.from(themeBtn).forEach((e) => {
-    e.innerHTML = "Dark Theme";
+    e.innerHTML = `<i class="fa fa-moon"></i> Dark`;
     e.style.background = "#333";
     e.style.transition = "0.5s";
   });
@@ -42,6 +55,15 @@ function setWhiteTheme() {
 
 function setBlackTheme() {
   localStorage.setItem("Theme", "Black");
+  body.style.background = "black";
+  nav.style.background = "black";
+  brandName.style.color = "white";
+
+  Array.from(navLinks).forEach((e) => {
+    e.style.color = "white";
+    e.style.transition = "0.5s";
+  });
+
   Array.from(cardText).forEach((e) => {
     e.style.color = "white";
     e.style.transition = "0.5s";
@@ -64,11 +86,12 @@ function setBlackTheme() {
   });
   Array.from(icon).forEach((e) => {
     e.style.color = "greenyellow";
+    body;
     e.style.transition = "0.5s";
   });
   Array.from(themeBtn).forEach((e) => {
-    e.innerHTML = "Light Theme";
-    e.style.background = "darkcyan";
+    e.innerHTML = `<i class="fa fa-asterisk"></i> Light`;
+    e.style.background = "lightseagreen";
     e.style.transition = "0.5s";
   });
   console.log(localStorage.getItem("Theme"));

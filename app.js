@@ -30,10 +30,11 @@ function fetchNews(API, res, message = null) {
       res.render("index", {
         data: JSON.parse(MyData).articles,
         message: message,
+        title: "News feed",
       });
     });
     response.on("error", (errMsg) => {
-      res.render("index", { data: "Error" });
+      res.render("index", { data: "Error", title: "News feed" });
     });
   });
 }
@@ -51,6 +52,7 @@ function fetchData(API, res, address, country) {
         address: address,
         country: country,
         error: false,
+        title: "Weather update",
       });
       // res.send(JSON.parse(MyData));
     });
@@ -96,6 +98,7 @@ function FetchWeatherInfo(req, res, city) {
           address: "",
           country: "",
           error: true,
+          title: "Weather update",
         });
       }
     });
@@ -162,7 +165,7 @@ app.get("*", (req, res) => {
   res.send("Page not found");
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8000;
 // const hostname = "127.0.0.1";
 
 // app.listen(port, hostname, () => {
