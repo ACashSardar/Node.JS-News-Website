@@ -45,6 +45,7 @@ nav {
   height: 80px;
   width: 80px;
 }
+
 .info span i {
   color: greenyellow;
 }
@@ -92,11 +93,13 @@ footer {
   position: relative;
   text-align: center;
   padding: 20px 5px;
+  border-top: 1px solid darkcyan;
 }
 
 footer label {
   color: darkcyan;
 }
+
 footer ul {
   display: flex;
   justify-content: center;
